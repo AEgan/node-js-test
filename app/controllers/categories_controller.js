@@ -8,3 +8,7 @@ var mongoose = require('mongoose'),
 exports.index = function(req, res) {
 	res.render("categories/index");
 }
+
+exports.new_category = function(req, res) {
+	res.render("categories/new");
+}
