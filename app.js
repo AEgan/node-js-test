@@ -22,3 +22,4 @@ require('./config/express')(app, config);
 require('./config/routes')(app);
 
 app.listen(config.port);
+console.log("listening on port " + config.port);
