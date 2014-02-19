@@ -9,4 +9,5 @@ module.exports = function(app){
 	app.get('/categories', categories_controller.index);
 	app.get('/categories/new', categories_controller.new_category);
 	app.post('/categories/new', categories_controller.create_category);
+	app.get('/categories/:name', categories_controller.show);
 };

@@ -5,6 +5,17 @@
 var mongoose = require('mongoose'),
   Category = mongoose.model('Category');
 
+/*
+ * Simple 'error handling' function
+ */
+var doError = function(e) {
+	util.debug("ERROR: " + error);
+	throw new Error(error);
+}
+
+/*
+ * Function for the categories index page
+ */
 exports.index = function(req, res) {
 	Category.find(function(err, cats) {
 		res.render("categories/index", {
@@ -13,10 +24,16 @@ exports.index = function(req, res) {
 	});
 }
 
+/*
+ * renders a page for a new category
+ */
 exports.new_category = function(req, res) {
 	res.render("categories/new");
 }
 
+/*
+ * attemps to insert a new category
+ */
 exports.create_category = function(req, res) {
 	var category = new Category({
 		name: req.body.name,
@@ -30,4 +47,20 @@ exports.create_category = function(req, res) {
 			return res.redirect("categories");
 		}
 	});
+}
+
+/*
+ * Category show page
+ */
+exports.show = function(req, res) {
+  Category.findOne({'name': req.params.name}, function(err, category) {
+  	if(err) {
+			doError(err);
+		}
+		else {
+			return res.render("categories/show", {
+				'category': category
+			});
+		}
+  });
 }
