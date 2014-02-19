@@ -6,7 +6,11 @@ var mongoose = require('mongoose'),
   Category = mongoose.model('Category');
 
 exports.index = function(req, res) {
-	res.render("categories/index");
+	Category.find(function(err, cats) {
+		res.render("categories/index", {
+			'categories': cats
+		});
+	});
 }
 
 exports.new_category = function(req, res) {
@@ -23,7 +27,7 @@ exports.create_category = function(req, res) {
 			doError(err);
 		}
 		else {
-			res.render("categories/index");
+			return res.redirect("categories");
 		}
 	});
 }

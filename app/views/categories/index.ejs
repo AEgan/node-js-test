@@ -1,4 +1,18 @@
-<% include ../header.ejs %>
+<% include ../navigation.ejs %>
 <h1>Categories</h1>
-<a href='categories/new'>New Category</a>
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Active</th>
+	</thead>
+	<tbody>
+		<% for(var i = 0; i < categories.length; i++) { %>
+			<tr>
+				<td><%= categories[i].name %></td>
+				<td><%= categories[i].active %></td>
+			</tr>
+		<% } %>
+	</tbody>
+</table>
+<a href='categories/new'>New Category</a> <br />
 <% include ../footer.ejs %>

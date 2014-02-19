@@ -8,4 +8,5 @@ module.exports = function(app){
 	var categories_controller = require('../app/controllers/categories_controller');
 	app.get('/categories', categories_controller.index);
 	app.get('/categories/new', categories_controller.new_category);
+	app.post('/categories/new', categories_controller.create_category);
 };
