@@ -57,6 +57,9 @@ exports.show = function(req, res) {
   	if(err) {
 			doError(err);
 		}
+		else if(!category) {
+			res.render('404');
+		}
 		else {
 			return res.render("categories/show", {
 				'category': category
