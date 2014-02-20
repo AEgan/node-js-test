@@ -41,7 +41,9 @@ exports.create_category = function(req, res) {
 	});
 	category.save(function(err, created_object) {
 		if(err) {
-			doError(err);
+			res.render('categories/new', {
+				error: "Name must not be blank"
+			});
 		}
 		else {
 			return res.redirect("categories");

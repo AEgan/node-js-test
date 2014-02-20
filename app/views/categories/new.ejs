@@ -1,4 +1,8 @@
 <% include ../navigation.ejs %>
+<br />
+<% if(error) { %>
+	<%= error %>
+<% } %>
 <h1>Create a new Category</h1>
 <form action="new" method="post">
 	Name:<input type="text" name="name"> <br />
