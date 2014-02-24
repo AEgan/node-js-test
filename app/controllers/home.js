@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
   Article = mongoose.model('Article');
+var mailer = require('../mailers/node_mailer');
 
 exports.index = function(req, res){
   Article.find(function(err, articles){
@@ -10,3 +11,9 @@ exports.index = function(req, res){
     });
   });
 };
+
+exports.send_mail = function(req, res) {
+	mailer.sendMail(function() {
+		res.render('home/index');
+	});
+}
