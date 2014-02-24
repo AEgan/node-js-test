@@ -11,7 +11,8 @@
     "mongoose": "~3.6.14",
     "ejs": "*",
     "should": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "nodemailer": "*"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
