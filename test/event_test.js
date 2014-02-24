@@ -36,12 +36,22 @@ describe('Category', function(){
 			category_object.save(done);
 		});
 
+		// makes sure you can create this thing
 		it('test1: should have properties', function(done) {
 			category_object.save(function(err, returned) {
 				should.not.exist(err);
 				returned.should.have.property('name', 'Game');
 				returned.should.have.property('active', true);
 				done();
+			});
+		});
+	});
+
+	describe('#save()', function(){
+		it('should return an error when trying to save something bad', function(){
+			var bad_obj = new Category({'name': '', active: false});
+			bad_obj.save(function(err, returned){
+				should.exist(err);
 			});
 		});
 	});
